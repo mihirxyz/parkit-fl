@@ -38,3 +38,6 @@ ios/.symlinks/
 *.swp
 .DS_Store
 Thumbs.db
+
+# Database
+parkit.db
