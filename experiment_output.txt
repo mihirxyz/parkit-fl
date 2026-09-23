@@ -1,0 +1,75 @@
+2026-09-23 19:44:45,025 - fl_orchestrator - INFO - ================================================================================
+2026-09-23 19:44:45,025 - fl_orchestrator - INFO - FEDERATED LEARNING EXPERIMENT
+2026-09-23 19:44:45,025 - fl_orchestrator - INFO - ================================================================================
+2026-09-23 19:44:45,026 - fl_orchestrator - INFO - Experiment started at 2026-09-23 19:44:45.026287
+2026-09-23 19:44:45,026 - fl_orchestrator - INFO - Starting FL server...
+2026-09-23 19:44:45,050 - fl_orchestrator - INFO - Server process started (PID: 30024), logging to C:\Users\inamd\Desktop\parkit-fl\fl_clients\logs\fl_server_process.log
+2026-09-23 19:44:47,051 - fl_orchestrator - INFO - Waiting for server to be ready...
+2026-09-23 19:44:50,644 - fl_orchestrator - INFO - Server is ready!
+2026-09-23 19:44:50,710 - fl_orchestrator - INFO - Loaded 3024 test samples
+2026-09-23 19:44:50,711 - fl_orchestrator - INFO - Starting 5 clients...
+2026-09-23 19:44:50,736 - fl_orchestrator - INFO - Started client client_0 (PID: 15008), logging to C:\Users\inamd\Desktop\parkit-fl\fl_clients\logs\client_0.log
+2026-09-23 19:44:51,259 - fl_orchestrator - INFO - Started client client_1 (PID: 20236), logging to C:\Users\inamd\Desktop\parkit-fl\fl_clients\logs\client_1.log
+2026-09-23 19:44:51,786 - fl_orchestrator - INFO - Started client client_2 (PID: 12680), logging to C:\Users\inamd\Desktop\parkit-fl\fl_clients\logs\client_2.log
+2026-09-23 19:44:52,308 - fl_orchestrator - INFO - Started client client_3 (PID: 18504), logging to C:\Users\inamd\Desktop\parkit-fl\fl_clients\logs\client_3.log
+2026-09-23 19:44:52,831 - fl_orchestrator - INFO - Started client client_4 (PID: 29168), logging to C:\Users\inamd\Desktop\parkit-fl\fl_clients\logs\client_4.log
+2026-09-23 19:44:53,332 - fl_orchestrator - INFO - Running 10 federated rounds...
+2026-09-23 19:44:53,332 - fl_orchestrator - INFO - 
+--- Waiting for round 0 to complete ---
+2026-09-23 19:45:15,594 - fl_orchestrator - INFO - Round 0 complete: 5/5 clients
+2026-09-23 19:45:21,877 - fl_orchestrator - INFO - Round 0: accuracy=0.9907, f1_macro=0.9886
+2026-09-23 19:45:21,877 - fl_orchestrator - INFO - 
+--- Waiting for round 1 to complete ---
+2026-09-23 19:45:23,909 - fl_orchestrator - INFO - Round 1 complete: 5/5 clients
+2026-09-23 19:45:26,473 - fl_orchestrator - INFO - Round 1: accuracy=0.9947, f1_macro=0.9935
+2026-09-23 19:45:26,474 - fl_orchestrator - INFO - 
+--- Waiting for round 2 to complete ---
+2026-09-23 19:45:28,501 - fl_orchestrator - INFO - Round 2 complete: 5/5 clients
+2026-09-23 19:45:31,038 - fl_orchestrator - INFO - Round 2: accuracy=0.9950, f1_macro=0.9939
+2026-09-23 19:45:31,039 - fl_orchestrator - INFO - 
+--- Waiting for round 3 to complete ---
+2026-09-23 19:45:33,100 - fl_orchestrator - INFO - Round 3 complete: 5/5 clients
+2026-09-23 19:45:35,647 - fl_orchestrator - INFO - Round 3: accuracy=0.9950, f1_macro=0.9939
+2026-09-23 19:45:35,648 - fl_orchestrator - INFO - 
+--- Waiting for round 4 to complete ---
+2026-09-23 19:45:37,714 - fl_orchestrator - INFO - Round 4 complete: 5/5 clients
+2026-09-23 19:45:40,285 - fl_orchestrator - INFO - Round 4: accuracy=0.9947, f1_macro=0.9935
+2026-09-23 19:45:40,286 - fl_orchestrator - INFO - 
+--- Waiting for round 5 to complete ---
+2026-09-23 19:45:47,381 - fl_orchestrator - INFO - Round 5 complete: 5/5 clients
+2026-09-23 19:45:49,947 - fl_orchestrator - INFO - Round 5: accuracy=0.9950, f1_macro=0.9939
+2026-09-23 19:45:49,948 - fl_orchestrator - INFO - 
+--- Waiting for round 6 to complete ---
+2026-09-23 19:45:51,979 - fl_orchestrator - INFO - Round 6 complete: 5/5 clients
+2026-09-23 19:45:54,525 - fl_orchestrator - INFO - Round 6: accuracy=0.9950, f1_macro=0.9939
+2026-09-23 19:45:54,526 - fl_orchestrator - INFO - 
+--- Waiting for round 7 to complete ---
+2026-09-23 19:46:01,605 - fl_orchestrator - INFO - Round 7 complete: 5/5 clients
+2026-09-23 19:46:04,187 - fl_orchestrator - INFO - Round 7: accuracy=0.9950, f1_macro=0.9939
+2026-09-23 19:46:04,189 - fl_orchestrator - INFO - 
+--- Waiting for round 8 to complete ---
+2026-09-23 19:46:06,234 - fl_orchestrator - INFO - Round 8 complete: 5/5 clients
+2026-09-23 19:46:08,802 - fl_orchestrator - INFO - Round 8: accuracy=0.9950, f1_macro=0.9939
+2026-09-23 19:46:08,803 - fl_orchestrator - INFO - 
+--- Waiting for round 9 to complete ---
+2026-09-23 19:46:10,828 - fl_orchestrator - INFO - Round 9 complete: 5/5 clients
+2026-09-23 19:46:13,402 - fl_orchestrator - INFO - Round 9: accuracy=0.9950, f1_macro=0.9939
+2026-09-23 19:46:13,403 - fl_orchestrator - INFO - 
+Waiting for clients to finish...
+2026-09-23 19:46:13,403 - fl_orchestrator - INFO - Client 0 finished
+2026-09-23 19:46:13,403 - fl_orchestrator - INFO - Client 1 finished
+2026-09-23 19:46:13,404 - fl_orchestrator - INFO - Client 2 finished
+2026-09-23 19:46:13,404 - fl_orchestrator - INFO - Client 3 finished
+2026-09-23 19:46:13,404 - fl_orchestrator - INFO - Client 4 finished
+2026-09-23 19:46:13,404 - fl_orchestrator - INFO - Shutting down server...
+2026-09-23 19:46:13,419 - fl_orchestrator - INFO - 
+Results saved to C:\Users\inamd\Desktop\parkit-fl\backend\app\ml\results\fl_metrics.json
+2026-09-23 19:46:13,419 - fl_orchestrator - INFO - ================================================================================
+2026-09-23 19:46:13,419 - fl_orchestrator - INFO - EXPERIMENT COMPLETE
+2026-09-23 19:46:13,419 - fl_orchestrator - INFO - ================================================================================
+
+Federated Learning Results Summary:
+  Final accuracy: 0.9950
+  Best accuracy: 0.9950
+  Mean accuracy: 0.9945
+  Total time: 88.4 seconds

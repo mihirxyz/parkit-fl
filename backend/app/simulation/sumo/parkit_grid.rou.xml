@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+    <vType id="passenger" vClass="passenger" accel="2.4" decel="4.5" sigma="0.5" length="5.0" minGap="2.5" maxSpeed="13.89"/>
+
+    <route id="west_east" edges="west_to_east east_out"/>
+    <route id="east_west" edges="east_to_west west_out"/>
+    <route id="south_north" edges="south_to_north north_out"/>
+    <route id="north_south" edges="north_to_south south_out"/>
+
+    <routeDistribution id="through_routes">
+        <route refId="west_east" probability="0.25"/>
+        <route refId="east_west" probability="0.25"/>
+        <route refId="south_north" probability="0.25"/>
+        <route refId="north_south" probability="0.25"/>
+    </routeDistribution>
+
+    <!-- Tuned for ~30% moving, ~70% parked -->
+    <!-- Reduced through_traffic to 50 (was 120), increased parking to 35 each -->
+    <!-- Parking durations 120-150s to balance against through-traffic -->
+    <flow id="through_traffic" type="passenger" route="through_routes" begin="0" end="3600" number="50" departLane="best" departSpeed="max"/>
+    
+    <!-- Parking visitors with moderate durations -->
+    <flow id="central_lot_visitors" type="passenger" route="west_east" begin="0" end="3600" number="35" departLane="best" departSpeed="max">
+        <stop parkingArea="central_lot" duration="150"/>
+    </flow>
+    <flow id="north_lot_visitors" type="passenger" route="south_north" begin="0" end="3600" number="35" departLane="best" departSpeed="max">
+        <stop parkingArea="north_lot" duration="150"/>
+    </flow>
+    <flow id="roadside_visitors" type="passenger" route="east_west" begin="0" end="3600" number="35" departLane="best" departSpeed="max">
+        <stop parkingArea="east_curb" duration="120"/>
+    </flow>
+</routes>

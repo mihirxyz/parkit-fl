@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<additional>
+    <!-- Off-street facilities are represented as named SUMO parking areas. -->
+    <parkingArea id="central_lot" lane="west_to_east_0" startPos="0.01" endPos="0.19" roadsideCapacity="18" width="5.0" length="5.0" angle="0"/>
+    <parkingArea id="north_lot" lane="south_to_north_0" startPos="0.01" endPos="0.19" roadsideCapacity="15" width="5.0" length="5.0" angle="0"/>
+
+    <!-- Roadside parking zones occupy curbside sections of through roads. -->
+    <parkingArea id="east_curb" lane="east_to_west_0" startPos="0.02" endPos="0.18" roadsideCapacity="12" width="2.6" length="5.0" angle="0"/>
+    <parkingArea id="south_curb" lane="north_to_south_0" startPos="0.02" endPos="0.18" roadsideCapacity="12" width="2.6" length="5.0" angle="0"/>
+</additional>

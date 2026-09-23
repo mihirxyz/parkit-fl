@@ -1,0 +1,142 @@
+Client client_2 started at 2026-09-23T19:48:16.450956
+================================================================================
+
+2026-09-23 19:48:22,582 - fl_client - INFO - Loaded 5069 samples for client 2 (31 vehicles)
+2026-09-23 19:48:22,582 - fl_client - INFO -   Class distribution: 1109 moving, 3960 parked
+2026-09-23 19:48:22,584 - fl_client - INFO - Client client_2 initialized with 4055 training samples
+2026-09-23 19:48:24,673 - fl_client - INFO - Registered with server: {'client_id': 'client_2', 'status': 'registered'}
+2026-09-23 19:48:24,674 - fl_client - INFO - Starting client loop for 10 rounds...
+2026-09-23 19:48:24,674 - fl_client - INFO - 
+=== Round 0 ===
+2026-09-23 19:48:26,734 - fl_client - INFO - Downloaded global model
+2026-09-23 19:48:26,736 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:48:32,446 - fl_client - INFO - Local training complete. Final loss: 0.1138
+2026-09-23 19:48:32,447 - fl_client - INFO - Local test accuracy: 0.9813
+2026-09-23 19:48:32,448 - fl_client - INFO - Uploading weights for round 0:
+2026-09-23 19:48:32,448 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:48:32,448 - fl_client - INFO -   round_num: 0
+2026-09-23 19:48:32,448 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:48:32,448 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:48:34,488 - fl_client - INFO - Uploaded weights for round 0
+2026-09-23 19:48:34,489 - fl_client - INFO - Round 0 complete. Waiting for next round...
+2026-09-23 19:48:35,489 - fl_client - INFO - 
+=== Round 1 ===
+2026-09-23 19:48:37,542 - fl_client - INFO - Downloaded global model
+2026-09-23 19:48:37,543 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:48:38,992 - fl_client - INFO - Local training complete. Final loss: 0.0440
+2026-09-23 19:48:38,994 - fl_client - INFO - Local test accuracy: 0.9882
+2026-09-23 19:48:38,994 - fl_client - INFO - Uploading weights for round 1:
+2026-09-23 19:48:38,994 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:48:38,995 - fl_client - INFO -   round_num: 1
+2026-09-23 19:48:38,995 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:48:38,995 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:48:41,044 - fl_client - INFO - Uploaded weights for round 1
+2026-09-23 19:48:41,046 - fl_client - INFO - Round 1 complete. Waiting for next round...
+2026-09-23 19:48:42,047 - fl_client - INFO - 
+=== Round 2 ===
+2026-09-23 19:48:44,082 - fl_client - INFO - Downloaded global model
+2026-09-23 19:48:44,082 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:48:45,356 - fl_client - INFO - Local training complete. Final loss: 0.0363
+2026-09-23 19:48:45,357 - fl_client - INFO - Local test accuracy: 0.9951
+2026-09-23 19:48:45,357 - fl_client - INFO - Uploading weights for round 2:
+2026-09-23 19:48:45,357 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:48:45,357 - fl_client - INFO -   round_num: 2
+2026-09-23 19:48:45,357 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:48:45,358 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:48:47,406 - fl_client - INFO - Uploaded weights for round 2
+2026-09-23 19:48:47,407 - fl_client - INFO - Round 2 complete. Waiting for next round...
+2026-09-23 19:48:48,408 - fl_client - INFO - 
+=== Round 3 ===
+2026-09-23 19:48:50,478 - fl_client - INFO - Downloaded global model
+2026-09-23 19:48:50,478 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:48:51,672 - fl_client - INFO - Local training complete. Final loss: 0.0330
+2026-09-23 19:48:51,673 - fl_client - INFO - Local test accuracy: 0.9951
+2026-09-23 19:48:51,674 - fl_client - INFO - Uploading weights for round 3:
+2026-09-23 19:48:51,674 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:48:51,674 - fl_client - INFO -   round_num: 3
+2026-09-23 19:48:51,674 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:48:51,674 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:48:53,728 - fl_client - INFO - Uploaded weights for round 3
+2026-09-23 19:48:53,729 - fl_client - INFO - Round 3 complete. Waiting for next round...
+2026-09-23 19:48:54,730 - fl_client - INFO - 
+=== Round 4 ===
+2026-09-23 19:48:56,812 - fl_client - INFO - Downloaded global model
+2026-09-23 19:48:56,813 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:48:57,969 - fl_client - INFO - Local training complete. Final loss: 0.0323
+2026-09-23 19:48:57,970 - fl_client - INFO - Local test accuracy: 0.9951
+2026-09-23 19:48:57,970 - fl_client - INFO - Uploading weights for round 4:
+2026-09-23 19:48:57,971 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:48:57,971 - fl_client - INFO -   round_num: 4
+2026-09-23 19:48:57,971 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:48:57,971 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:49:00,006 - fl_client - INFO - Uploaded weights for round 4
+2026-09-23 19:49:00,007 - fl_client - INFO - Round 4 complete. Waiting for next round...
+2026-09-23 19:49:01,008 - fl_client - INFO - 
+=== Round 5 ===
+2026-09-23 19:49:03,044 - fl_client - INFO - Downloaded global model
+2026-09-23 19:49:03,044 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:49:04,117 - fl_client - INFO - Local training complete. Final loss: 0.0321
+2026-09-23 19:49:04,118 - fl_client - INFO - Local test accuracy: 0.9951
+2026-09-23 19:49:04,119 - fl_client - INFO - Uploading weights for round 5:
+2026-09-23 19:49:04,119 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:49:04,119 - fl_client - INFO -   round_num: 5
+2026-09-23 19:49:04,119 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:49:04,119 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:49:06,168 - fl_client - INFO - Uploaded weights for round 5
+2026-09-23 19:49:06,168 - fl_client - INFO - Round 5 complete. Waiting for next round...
+2026-09-23 19:49:07,169 - fl_client - INFO - 
+=== Round 6 ===
+2026-09-23 19:49:09,234 - fl_client - INFO - Downloaded global model
+2026-09-23 19:49:09,235 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:49:10,167 - fl_client - INFO - Local training complete. Final loss: 0.0313
+2026-09-23 19:49:10,168 - fl_client - INFO - Local test accuracy: 0.9951
+2026-09-23 19:49:10,169 - fl_client - INFO - Uploading weights for round 6:
+2026-09-23 19:49:10,169 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:49:10,169 - fl_client - INFO -   round_num: 6
+2026-09-23 19:49:10,169 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:49:10,169 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:49:12,211 - fl_client - INFO - Uploaded weights for round 6
+2026-09-23 19:49:12,212 - fl_client - INFO - Round 6 complete. Waiting for next round...
+2026-09-23 19:49:13,213 - fl_client - INFO - 
+=== Round 7 ===
+2026-09-23 19:49:15,273 - fl_client - INFO - Downloaded global model
+2026-09-23 19:49:15,273 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:49:16,198 - fl_client - INFO - Local training complete. Final loss: 0.0309
+2026-09-23 19:49:16,199 - fl_client - INFO - Local test accuracy: 0.9951
+2026-09-23 19:49:16,199 - fl_client - INFO - Uploading weights for round 7:
+2026-09-23 19:49:16,199 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:49:16,200 - fl_client - INFO -   round_num: 7
+2026-09-23 19:49:16,200 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:49:16,200 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:49:18,239 - fl_client - INFO - Uploaded weights for round 7
+2026-09-23 19:49:18,239 - fl_client - INFO - Round 7 complete. Waiting for next round...
+2026-09-23 19:49:19,240 - fl_client - INFO - 
+=== Round 8 ===
+2026-09-23 19:49:21,291 - fl_client - INFO - Downloaded global model
+2026-09-23 19:49:21,291 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:49:22,235 - fl_client - INFO - Local training complete. Final loss: 0.0315
+2026-09-23 19:49:22,236 - fl_client - INFO - Local test accuracy: 0.9951
+2026-09-23 19:49:22,237 - fl_client - INFO - Uploading weights for round 8:
+2026-09-23 19:49:22,237 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:49:22,237 - fl_client - INFO -   round_num: 8
+2026-09-23 19:49:22,237 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:49:22,237 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:49:24,272 - fl_client - INFO - Uploaded weights for round 8
+2026-09-23 19:49:24,273 - fl_client - INFO - Round 8 complete. Waiting for next round...
+2026-09-23 19:49:25,273 - fl_client - INFO - 
+=== Round 9 ===
+2026-09-23 19:49:27,321 - fl_client - INFO - Downloaded global model
+2026-09-23 19:49:27,321 - fl_client - INFO - Training for 3 epochs...
+2026-09-23 19:49:28,284 - fl_client - INFO - Local training complete. Final loss: 0.0313
+2026-09-23 19:49:28,285 - fl_client - INFO - Local test accuracy: 0.9951
+2026-09-23 19:49:28,285 - fl_client - INFO - Uploading weights for round 9:
+2026-09-23 19:49:28,286 - fl_client - INFO -   client_id: client_2
+2026-09-23 19:49:28,286 - fl_client - INFO -   round_num: 9
+2026-09-23 19:49:28,286 - fl_client - INFO -   num_samples: 4055
+2026-09-23 19:49:28,286 - fl_client - INFO -   weights keys: ['fc1.weight', 'fc1.bias', 'fc2.weight', 'fc2.bias', 'fc3.weight', 'fc3.bias']
+2026-09-23 19:49:30,323 - fl_client - INFO - Uploaded weights for round 9
+2026-09-23 19:49:30,324 - fl_client - INFO - Round 9 complete. Waiting for next round...
+2026-09-23 19:49:31,325 - fl_client - INFO - 
+================================================================================
+2026-09-23 19:49:31,325 - fl_client - INFO - Client finished all rounds successfully!
+2026-09-23 19:49:31,325 - fl_client - INFO - ================================================================================

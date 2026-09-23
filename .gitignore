@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Generated simulation data
+backend/app/ml/data/*.csv
+!backend/app/ml/data/.gitkeep
+
+# Flutter and Dart
+.dart_tool/
+.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+*.iml
+android/.gradle/
+android/local.properties
+ios/Pods/
+ios/.symlinks/
+
+# IDE and operating system
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

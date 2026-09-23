@@ -1,0 +1,68 @@
+======================================================================
+CENTRALIZED BASELINE TRAINING
+======================================================================
+
+Loading dataset from C:\Users\inamd\Desktop\parkit-fl\backend\app\ml\data\sumo_dataset.csv...
+  Loaded 20158 samples with 3 features
+  Class distribution: 5458 moving (27.1%), 14700 parked (72.9%)
+
+Splitting data (train/val/test = 70/15/15, stratified)...
+  Train: 14110 samples (3820 moving, 10290 parked)
+  Val:   3023 samples (819 moving, 2204 parked)
+  Test:  3025 samples (819 moving, 2206 parked)
+
+Class weights:
+  Positive class (parked) weight: 0.3712
+  Class distribution: 3820 moving, 10290 parked
+
+Training for up to 30 epochs (early stopping patience=5)...
+  Epoch  1/30 | Train Loss: 0.2967 | Val Loss: 0.0626
+  Epoch  5/30 | Train Loss: 0.0317 | Val Loss: 0.0285
+  Epoch 10/30 | Train Loss: 0.0293 | Val Loss: 0.0297
+  Early stopping triggered at epoch 13
+
+Evaluating on test set...
+
+======================================================================
+TEST SET EVALUATION RESULTS
+======================================================================
+
+OVERALL METRICS:
+  Accuracy:           0.9944
+  Precision (macro):  0.9962
+  Recall (macro):     0.9896
+  F1-score (macro):   0.9928
+  Precision (weighted): 0.9944
+  Recall (weighted):  0.9944
+  F1-score (weighted): 0.9944
+
+PER-CLASS METRICS:
+
+  MOVING (class 0, minority):
+    Precision: 1.0000
+    Recall:    0.9792
+    F1-score:  0.9895
+    Support:   819 samples
+
+  PARKED (class 1, majority):
+    Precision: 0.9924
+    Recall:    1.0000
+    F1-score:  0.9962
+    Support:   2206 samples
+
+CONFUSION MATRIX:
+                 Predicted Moving  Predicted Parked
+  Actual Moving:     802                17
+  Actual Parked:       0              2206
+
+Saving model weights to C:\Users\inamd\Desktop\parkit-fl\backend\app\ml\model_weights.pth...
+Traceback (most recent call last):
+  File "C:\Users\inamd\Desktop\parkit-fl\backend\app\ml\train_centralized.py", line 412, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "C:\Users\inamd\Desktop\parkit-fl\backend\app\ml\train_centralized.py", line 379, in main
+    print(f"  \u2713 Model saved")
+  File "C:\Users\inamd\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 2: character maps to <undefined>

@@ -1,0 +1,509 @@
+#!/usr/bin/env python3
+"""
+Federated Learning Server (FL Coordinator)
+
+FastAPI-based server that:
+- Registers clients
+- Serves global model weights
+- Receives local model updates from clients
+- Aggregates updates using FedAvg
+- Tracks round progress
+"""
+
+import asyncio
+import json
+import logging
+import threading
+import time
+import faulthandler
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple, Union
+
+import numpy as np
+import torch
+import torch.nn as nn
+from fastapi import FastAPI, HTTPException
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
+
+# Setup logging to both console and file
+LOG_DIR = Path(__file__).resolve().parent / "results"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+LOG_FILE = LOG_DIR / "fl_server.log"
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler(LOG_FILE),
+        logging.StreamHandler(),
+    ],
+)
+logger = logging.getLogger("fl_server")
+
+# Setup faulthandler to dump thread stacks if server hangs
+FAULT_DUMP_FILE = LOG_DIR / "fault_dump.log"
+faulthandler.enable(file=open(FAULT_DUMP_FILE, 'w'))
+logger.info(f"Faulthandler enabled. Thread dumps will be written to {FAULT_DUMP_FILE}")
+
+# Create a dedicated thread pool executor for heavy work (submit_update, aggregation)
+# This is SEPARATE from FastAPI/Starlette's request handler thread pool
+# This prevents thread pool starvation of request handlers
+WORKER_EXECUTOR = ThreadPoolExecutor(
+    max_workers=10,
+    thread_name_prefix="fl_worker_"
+)
+logger.info(f"Created dedicated worker thread pool with 10 threads (separate from FastAPI request handlers)")
+
+# Import model
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from app.ml.model import ParkingStateClassifier
+
+
+# ============================================================================
+# Data Models
+# ============================================================================
+
+class RegisterClientRequest(BaseModel):
+    """Client registration request."""
+    client_id: str
+    num_samples: int
+
+
+class RegisterClientResponse(BaseModel):
+    """Client registration response."""
+    client_id: str
+    status: str
+
+
+class SubmitUpdateRequest(BaseModel):
+    """Client weight submission."""
+    client_id: str
+    round_num: int
+    weights: Dict[str, Union[List[float], List[List[float]]]]  # 1D or 2D weight tensors
+    num_samples: int
+    local_loss: Optional[float] = None
+
+
+class SubmitUpdateResponse(BaseModel):
+    """Update submission response."""
+    round_num: int
+    status: str
+
+
+class RoundStatusResponse(BaseModel):
+    """Round status info."""
+    current_round: int
+    round_complete: bool
+    clients_participated: int
+    clients_total: int
+
+
+# ============================================================================
+# FL Server Class
+# ============================================================================
+
+class FLServer:
+    """Federated Learning Coordinator."""
+    
+    def __init__(self, num_clients: int = 5):
+        """Initialize server."""
+        self.num_clients = num_clients
+        self.current_round = 0
+        
+        # Global model (initialized randomly)
+        self.global_model = ParkingStateClassifier()
+        self.global_weights = self._serialize_weights(self.global_model.state_dict())
+        
+        # Client registry: client_id -> num_samples
+        self.clients: Dict[str, int] = {}
+        
+        # Round tracking: current_round -> {client_id -> weights}
+        self.round_updates: Dict[int, Dict[str, Tuple[Dict, int]]] = {}
+        
+        # History for logging
+        self.round_history: List[Dict] = []
+        
+        # Thread synchronization: protect shared state
+        self.state_lock = threading.Lock()
+        
+        logger.info(f"FL Server initialized for {num_clients} clients with thread synchronization")
+    
+    def _serialize_weights(self, state_dict: dict) -> dict:
+        """Convert torch state dict to serializable format."""
+        serialized = {}
+        for k, v in state_dict.items():
+            if isinstance(v, torch.Tensor):
+                serialized[k] = v.detach().cpu().numpy().tolist()
+            else:
+                serialized[k] = v
+        return serialized
+    
+    def _deserialize_weights(self, serialized: dict) -> dict:
+        """Convert serialized weights back to torch tensors."""
+        state_dict = {}
+        for k, v in serialized.items():
+            if isinstance(v, list):
+                state_dict[k] = torch.tensor(v, dtype=torch.float32)
+            else:
+                state_dict[k] = v
+        return state_dict
+    
+    def register_client(self, client_id: str, num_samples: int) -> RegisterClientResponse:
+        """Register a client."""
+        if client_id in self.clients:
+            logger.warning(f"Client {client_id} re-registered with {num_samples} samples")
+        else:
+            logger.info(f"Registered new client {client_id} with {num_samples} samples")
+        
+        self.clients[client_id] = num_samples
+        return RegisterClientResponse(client_id=client_id, status="registered")
+    
+    def get_global_model(self) -> dict:
+        """Return current global model weights."""
+        return self.global_weights
+    
+    def submit_update(
+        self,
+        client_id: str,
+        round_num: int,
+        weights: dict,
+        num_samples: int,
+        local_loss: Optional[float] = None,
+    ) -> SubmitUpdateResponse:
+        """Accept local model update from client. Trigger aggregation if all clients submitted."""
+        lock_timeout = 10  # seconds
+        thread_name = threading.current_thread().name
+        logger.info(f"[LOCK] {client_id} thread={thread_name} attempting to acquire state lock for round {round_num} (timeout={lock_timeout}s)")
+        
+        acquired = self.state_lock.acquire(timeout=lock_timeout)
+        if not acquired:
+            logger.error(f"[LOCK] {client_id} thread={thread_name} FAILED to acquire lock within {lock_timeout}s - TIMEOUT!")
+            logger.error(f"[LOCK] {client_id} thread={thread_name} Another thread may be stuck. Dumping all thread stacks...")
+            faulthandler.dump_traceback(file=open(LOG_FILE.parent / "hung_threads.log", 'w'), all_threads=True)
+            raise HTTPException(
+                status_code=503,
+                detail=f"Server lock timeout - another request may be stuck"
+            )
+        
+        try:
+            logger.info(f"[LOCK] {client_id} thread={thread_name} acquired state lock (held for max {lock_timeout}s)")
+            
+            try:
+                if client_id not in self.clients:
+                    logger.error(f"[LOCK] {client_id} not registered, releasing lock")
+                    raise HTTPException(status_code=400, detail=f"Client {client_id} not registered")
+                
+                if round_num != self.current_round:
+                    logger.error(
+                        f"[LOCK] {client_id} submitted for wrong round {round_num} (current: {self.current_round}), releasing lock"
+                    )
+                    raise HTTPException(
+                        status_code=400,
+                        detail=f"Expected round {self.current_round}, got {round_num}",
+                    )
+                
+                # Initialize round updates if needed
+                if round_num not in self.round_updates:
+                    logger.info(f"[LOCK] {client_id} initializing round {round_num} updates dict")
+                    self.round_updates[round_num] = {}
+                
+                # Store update
+                thread_name = threading.current_thread().name
+                logger.info(f"[LOCK] {client_id} thread={thread_name} BEFORE dict assignment: round_num={round_num}, weights type={type(self.round_updates[round_num])}")
+                
+                # This is the critical line that might hang
+                logger.info(f"[LOCK] {client_id} thread={thread_name} attempting to assign weights to round_updates[{round_num}][{client_id}]")
+                self.round_updates[round_num][client_id] = (weights, num_samples)
+                logger.info(f"[LOCK] {client_id} thread={thread_name} AFTER dict assignment: successfully stored")
+                
+                logger.info(
+                    f"[LOCK] {client_id} thread={thread_name} stored update for round {round_num} "
+                    f"({len(self.round_updates[round_num])}/{self.num_clients} clients)"
+                )
+                
+                # Check if all clients have submitted
+                if len(self.round_updates[round_num]) == self.num_clients:
+                    logger.info(
+                        f"[LOCK] {client_id} triggered: all {self.num_clients} clients submitted for round {round_num}. "
+                        f"Spawning aggregation in background thread..."
+                    )
+                    # Spawn aggregation in a background thread so it doesn't block the request handler
+                    thread = threading.Thread(target=self._aggregate_round, args=(round_num,), daemon=True)
+                    thread.start()
+                    logger.info(f"[LOCK] {client_id} spawned aggregation thread")
+                else:
+                    logger.info(f"[LOCK] {client_id} waiting for more clients ({len(self.round_updates[round_num])}/{self.num_clients})")
+                
+                logger.info(f"[LOCK] {client_id} about to create response object")
+                response = SubmitUpdateResponse(round_num=round_num, status="accepted")
+                logger.info(f"[LOCK] {client_id} created response object successfully")
+                logger.info(f"[LOCK] {client_id} releasing state lock, returning success")
+                return response
+            
+            except HTTPException:
+                logger.info(f"[LOCK] {client_id} releasing lock due to HTTPException")
+                raise
+            except Exception as e:
+                logger.error(f"[LOCK] {client_id} releasing lock due to exception: {e}", exc_info=True)
+                raise
+        
+        finally:
+            self.state_lock.release()
+            logger.info(f"[LOCK] {client_id} lock released (finally block)")
+    
+    def _aggregate_round(self, round_num: int) -> None:
+        """FedAvg aggregation: w_global = sum(n_i / n_total * w_i)"""
+        thread_name = threading.current_thread().name
+        logger.info(f"[AGG] thread={thread_name} Starting aggregation for round {round_num}")
+        
+        lock_timeout = 30  # Aggregation may take longer
+        logger.info(f"[AGG] thread={thread_name} Round {round_num} attempting to acquire lock (timeout={lock_timeout}s)")
+        acquired = self.state_lock.acquire(timeout=lock_timeout)
+        
+        if not acquired:
+            logger.error(f"[AGG] thread={thread_name} Round {round_num} FAILED to acquire lock within {lock_timeout}s - TIMEOUT!")
+            logger.error(f"[AGG] thread={thread_name} Dumping all thread stacks...")
+            faulthandler.dump_traceback(file=open(LOG_FILE.parent / "agg_hung_threads.log", 'w'), all_threads=True)
+            return
+        
+        try:
+            logger.info(f"[AGG] thread={thread_name} Round {round_num} acquired lock, beginning aggregation")
+            
+            if round_num not in self.round_updates:
+                logger.error(f"[AGG] Round {round_num} has no updates, aborting")
+                return
+            
+            updates = self.round_updates[round_num]
+            logger.info(f"[AGG] Round {round_num} has {len(updates)} client updates")
+            
+            if len(updates) == 0:
+                logger.error(f"[AGG] Round {round_num} updates dict is empty, aborting")
+                return
+            
+            total_samples = sum(num_samples for _, num_samples in updates.values())
+            logger.info(f"[AGG] Round {round_num} total samples: {total_samples}")
+            
+            aggregated = None
+            for client_id, (weights, num_samples) in updates.items():
+                weight = num_samples / total_samples
+                deserialized = self._deserialize_weights(weights)
+                logger.debug(f"[AGG] Round {round_num}: processing {client_id} (weight={weight:.4f})")
+                
+                if aggregated is None:
+                    aggregated = {k: weight * v for k, v in deserialized.items()}
+                else:
+                    for k, v in deserialized.items():
+                        aggregated[k] = aggregated[k] + weight * v
+            
+            # Convert aggregated weights to proper tensor format before loading
+            state_dict = {}
+            for k, v in aggregated.items():
+                if isinstance(v, list):
+                    state_dict[k] = torch.tensor(v, dtype=torch.float32)
+                else:
+                    state_dict[k] = v
+            
+            self.global_model.load_state_dict(state_dict)
+            self.global_weights = self._serialize_weights(state_dict)
+            
+            self.round_history.append({
+                "round": round_num,
+                "clients_participated": len(updates),
+                "total_samples": total_samples,
+            })
+            
+            logger.info(f"[AGG] Round {round_num} aggregated: {len(updates)} clients, {total_samples} total samples")
+            self.current_round = round_num + 1
+            logger.info(f"[AGG] Round {round_num} complete, advanced to round {self.current_round}")
+        
+        except Exception as e:
+            logger.error(f"[AGG] Error during aggregation of round {round_num}: {e}", exc_info=True)
+        
+        finally:
+            self.state_lock.release()
+            logger.info(f"[AGG] Round {round_num} releasing lock (finally block)")
+    
+    def get_round_status(self) -> RoundStatusResponse:
+        """Get current round status."""
+        # PROTECT this read with the same lock used for writes to prevent race conditions
+        lock_timeout = 2  # Should be very fast for a simple read
+        thread_name = threading.current_thread().name
+        logger.info(f"[ROUND_STATUS] Thread={thread_name} attempting to acquire lock for round status (timeout={lock_timeout}s)")
+        
+        acquired = self.state_lock.acquire(timeout=lock_timeout)
+        if not acquired:
+            logger.error(f"[ROUND_STATUS] Thread={thread_name} FAILED to acquire lock within {lock_timeout}s")
+            raise HTTPException(
+                status_code=503,
+                detail="Server busy - unable to get round status"
+            )
+        
+        try:
+            logger.info(f"[ROUND_STATUS] Thread={thread_name} acquired lock for round status")
+            
+            if self.current_round not in self.round_updates:
+                clients_participated = 0
+            else:
+                clients_participated = len(self.round_updates[self.current_round])
+            
+            round_complete = clients_participated == self.num_clients
+            
+            logger.info(f"[ROUND_STATUS] Thread={thread_name} returning: current_round={self.current_round}, "
+                       f"clients_participated={clients_participated}/{self.num_clients}")
+            
+            return RoundStatusResponse(
+                current_round=self.current_round,
+                round_complete=round_complete,
+                clients_participated=clients_participated,
+                clients_total=self.num_clients,
+            )
+        
+        finally:
+            self.state_lock.release()
+            logger.info(f"[ROUND_STATUS] Thread={thread_name} released lock for round status")
+
+
+# ============================================================================
+# FastAPI App
+# ============================================================================
+
+server = FLServer(num_clients=5)
+app = FastAPI(title="FL Server")
+
+
+# Global exception handler for validation errors (422)
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    """Log validation errors with full details."""
+    logger.error(f"Validation error on {request.method} {request.url.path}")
+    logger.error(f"  Error details: {exc.errors()}")
+    logger.error(f"  Request body: {await request.body()}")
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors()},
+    )
+
+
+@app.post("/register_client", response_model=RegisterClientResponse)
+def register_client(request: RegisterClientRequest):
+    """Register a new client."""
+    try:
+        logger.info(f"Register request received: client_id={request.client_id}, num_samples={request.num_samples}")
+        response = server.register_client(request.client_id, request.num_samples)
+        logger.info(f"Registration successful for {request.client_id}")
+        return response
+    except Exception as e:
+        logger.error(f"Error in /register_client: {e}", exc_info=True)
+        raise
+
+
+@app.get("/global_model")
+def get_global_model():
+    """Download global model weights."""
+    try:
+        logger.info("Global model request received")
+        model = server.get_global_model()
+        logger.debug("Global model served")
+        return model
+    except Exception as e:
+        logger.error(f"Error in /global_model: {e}", exc_info=True)
+        raise
+
+
+@app.post("/submit_update", response_model=SubmitUpdateResponse)
+def submit_update(request: SubmitUpdateRequest):
+    """Submit local model update.
+    
+    NOTE: This route handler is synchronous, which means FastAPI/Starlette will
+    try to run it in a thread pool worker. However, the actual work is offloaded
+    to WORKER_EXECUTOR to prevent thread pool starvation on the request handler pool.
+    """
+    try:
+        logger.info(f"[ROUTE] Update submission from {request.client_id} for round {request.round_num}")
+        logger.info(f"[ROUTE]   num_samples: {request.num_samples}")
+        logger.info(f"[ROUTE]   weights keys: {list(request.weights.keys()) if request.weights else 'None'}")
+        logger.debug(f"[ROUTE]   Full request: {request}")
+        
+        # Offload the heavy work to dedicated executor thread to avoid blocking FastAPI's request handler pool
+        logger.info(f"[ROUTE] Submitting work to worker executor")
+        future = WORKER_EXECUTOR.submit(
+            server.submit_update,
+            request.client_id,
+            request.round_num,
+            request.weights,
+            request.num_samples,
+            request.local_loss,
+        )
+        
+        # Wait for result with explicit timeout
+        timeout_sec = 15
+        logger.info(f"[ROUTE] Waiting for worker result (timeout={timeout_sec}s)")
+        response = future.result(timeout=timeout_sec)
+        logger.info(f"[ROUTE] Update from {request.client_id} accepted for round {request.round_num}")
+        return response
+    
+    except TimeoutError:
+        logger.error(f"[ROUTE] Executor timeout after {timeout_sec}s - worker thread may be stuck")
+        faulthandler.dump_traceback(file=open(LOG_FILE.parent / "executor_timeout.log", 'w'), all_threads=True)
+        raise HTTPException(
+            status_code=503,
+            detail="Server worker timeout - internal processing stalled"
+        )
+    except Exception as e:
+        logger.error(f"[ROUTE] Error in /submit_update: {e}", exc_info=True)
+        raise
+
+
+@app.get("/round_status", response_model=RoundStatusResponse)
+def get_round_status():
+    """Get current round status."""
+    try:
+        status = server.get_round_status()
+        logger.debug(f"Round status: {status.current_round}, complete={status.round_complete}, participants={status.clients_participated}")
+        return status
+    except Exception as e:
+        logger.error(f"Error in /round_status: {e}", exc_info=True)
+        raise
+
+
+@app.get("/health")
+def health():
+    """Health check."""
+    try:
+        return {"status": "ok", "current_round": server.current_round}
+    except Exception as e:
+        logger.error(f"Error in /health: {e}", exc_info=True)
+        raise
+
+
+if __name__ == "__main__":
+    import uvicorn
+    
+    logger.info("=" * 80)
+    logger.info("Starting FL Server")
+    logger.info("=" * 80)
+    logger.info("Configuration:")
+    logger.info("  - Single worker process (state centralized)")
+    logger.info("  - Explicit thread pool for sync handlers")
+    logger.info("  - Lock timeouts enabled")
+    logger.info("  - Faulthandler enabled for thread dumps")
+    logger.info("=" * 80)
+    
+    # Use uvicorn with explicit thread pool size
+    # Default: uvicorn uses min(multiprocessing.cpu_count() + 1, 5) workers
+    # For sync handlers, we need adequate thread pool size
+    # Using 'interface' parameter forces the default interface (ASGI3)
+    uvicorn.run(
+        app,
+        host="127.0.0.1",
+        port=8000,
+        log_level="info",
+        # Explicit thread pool configuration
+        # This ensures we have enough workers for sync handlers
+        # Note: This doesn't directly set thread pool size, but works with lifespan
+        interface="asgi3",
+    )

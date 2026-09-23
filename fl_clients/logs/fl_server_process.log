@@ -1,0 +1,627 @@
+2026-09-23 19:39:32,309 - fl_server - INFO - FL Server initialized for 5 clients
+INFO:     Started server process [29584]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60718 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60729 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:39:39,812 - fl_server - INFO - Client client_0 registered (1/5 registered)
+INFO:     127.0.0.1:60735 - "POST /register_client HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60738 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+2026-09-23 19:39:40,283 - fl_server - INFO - Client client_1 registered (2/5 registered)
+INFO:     127.0.0.1:60739 - "POST /register_client HTTP/1.1" 200 OK
+2026-09-23 19:39:41,196 - fl_server - INFO - Client client_2 registered (3/5 registered)
+INFO:     127.0.0.1:60742 - "POST /register_client HTTP/1.1" 200 OK
+2026-09-23 19:39:41,560 - fl_server - INFO - Client client_3 registered (4/5 registered)
+INFO:     127.0.0.1:60744 - "POST /register_client HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60747 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:39:41,947 - fl_server - INFO - Client client_4 registered (5/5 registered)
+INFO:     127.0.0.1:60748 - "POST /register_client HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60750 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60751 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60752 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60753 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60759 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:39:48,076 - fl_server - INFO - Update received from client_1 for round 0: 1/5 clients
+INFO:     127.0.0.1:60762 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:39:48,120 - fl_server - INFO - Update received from client_0 for round 0: 2/5 clients
+INFO:     127.0.0.1:60763 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:39:48,686 - fl_server - INFO - Update received from client_2 for round 0: 3/5 clients
+INFO:     127.0.0.1:60764 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:39:48,856 - fl_server - INFO - Update received from client_3 for round 0: 4/5 clients
+INFO:     127.0.0.1:60765 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60766 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+2026-09-23 19:39:49,027 - fl_server - INFO - Update received from client_4 for round 0: 5/5 clients
+2026-09-23 19:39:49,029 - fl_server - INFO - Round 0 aggregated. Advancing to round 1
+INFO:     127.0.0.1:60768 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60775 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60776 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60777 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60778 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60780 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:39:54,076 - fl_server - INFO - Update received from client_1 for round 1: 1/5 clients
+INFO:     127.0.0.1:60787 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:39:54,122 - fl_server - INFO - Update received from client_0 for round 1: 2/5 clients
+INFO:     127.0.0.1:60788 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:39:54,326 - fl_server - INFO - Update received from client_4 for round 1: 3/5 clients
+INFO:     127.0.0.1:60789 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:39:54,434 - fl_server - INFO - Update received from client_3 for round 1: 4/5 clients
+INFO:     127.0.0.1:60790 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:39:54,670 - fl_server - INFO - Update received from client_2 for round 1: 5/5 clients
+2026-09-23 19:39:54,672 - fl_server - INFO - Round 1 aggregated. Advancing to round 2
+INFO:     127.0.0.1:60791 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60797 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60799 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60800 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60801 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60802 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60804 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60805 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+2026-09-23 19:39:59,660 - fl_server - INFO - Update received from client_4 for round 2: 1/5 clients
+INFO:     127.0.0.1:60811 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:00,410 - fl_server - INFO - Update received from client_3 for round 2: 2/5 clients
+INFO:     127.0.0.1:60812 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:00,863 - fl_server - INFO - Update received from client_1 for round 2: 3/5 clients
+INFO:     127.0.0.1:62757 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:00,893 - fl_server - INFO - Update received from client_0 for round 2: 4/5 clients
+INFO:     127.0.0.1:63806 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:01,156 - fl_server - INFO - Update received from client_2 for round 2: 5/5 clients
+2026-09-23 19:40:01,159 - fl_server - INFO - Round 2 aggregated. Advancing to round 3
+INFO:     127.0.0.1:64281 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64288 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64292 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62873 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62874 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62875 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:04,930 - fl_server - INFO - Update received from client_4 for round 3: 1/5 clients
+INFO:     127.0.0.1:62876 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62877 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:05,841 - fl_server - INFO - Update received from client_3 for round 3: 2/5 clients
+INFO:     127.0.0.1:62882 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62886 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:40:07,466 - fl_server - INFO - Update received from client_1 for round 3: 3/5 clients
+INFO:     127.0.0.1:62888 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:07,481 - fl_server - INFO - Update received from client_0 for round 3: 4/5 clients
+INFO:     127.0.0.1:62889 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:07,730 - fl_server - INFO - Update received from client_2 for round 3: 5/5 clients
+2026-09-23 19:40:07,731 - fl_server - INFO - Round 3 aggregated. Advancing to round 4
+INFO:     127.0.0.1:62891 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62892 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62897 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62898 - "GET /round_status?round_num=1 HTTP/1.1" 200 OK
+2026-09-23 19:40:10,161 - fl_server - INFO - Update received from client_4 for round 4: 1/5 clients
+INFO:     127.0.0.1:62901 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62902 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62904 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:11,238 - fl_server - INFO - Update received from client_3 for round 4: 2/5 clients
+INFO:     127.0.0.1:62907 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62914 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62915 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62919 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:14,449 - fl_server - INFO - Update received from client_0 for round 4: 3/5 clients
+INFO:     127.0.0.1:62920 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:14,496 - fl_server - INFO - Update received from client_1 for round 4: 4/5 clients
+INFO:     127.0.0.1:62921 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:14,634 - fl_server - INFO - Update received from client_2 for round 4: 5/5 clients
+2026-09-23 19:40:14,634 - fl_server - INFO - Round 4 aggregated. Advancing to round 5
+INFO:     127.0.0.1:62923 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62924 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:40:15,444 - fl_server - INFO - Update received from client_4 for round 5: 1/5 clients
+INFO:     127.0.0.1:62926 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:16,568 - fl_server - INFO - Update received from client_3 for round 5: 2/5 clients
+INFO:     127.0.0.1:62932 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62933 - "GET /round_status?round_num=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62934 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62935 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62937 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62938 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62945 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62948 - "POST /submit_update HTTP/1.1" 400 Bad Request
+2026-09-23 19:40:20,754 - fl_server - INFO - Update received from client_0 for round 5: 3/5 clients
+INFO:     127.0.0.1:62949 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:20,769 - fl_server - INFO - Update received from client_2 for round 5: 4/5 clients
+INFO:     127.0.0.1:62950 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:20,863 - fl_server - INFO - Update received from client_1 for round 5: 5/5 clients
+2026-09-23 19:40:20,864 - fl_server - INFO - Round 5 aggregated. Advancing to round 6
+INFO:     127.0.0.1:62951 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62952 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:21,984 - fl_server - INFO - Update received from client_3 for round 6: 1/5 clients
+INFO:     127.0.0.1:62958 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62961 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62963 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62964 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62965 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:24,744 - fl_server - INFO - Update received from client_4 for round 6: 2/5 clients
+INFO:     127.0.0.1:62966 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62967 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62969 - "GET /round_status?round_num=3 HTTP/1.1" 200 OK
+2026-09-23 19:40:27,313 - fl_server - INFO - Update received from client_2 for round 6: 3/5 clients
+INFO:     127.0.0.1:62976 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:27,534 - fl_server - INFO - Update received from client_0 for round 6: 4/5 clients
+2026-09-23 19:40:27,535 - fl_server - INFO - Update received from client_1 for round 6: 5/5 clients
+INFO:     127.0.0.1:62979 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:27,536 - fl_server - INFO - Round 6 aggregated. Advancing to round 7
+INFO:     127.0.0.1:62978 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:27,624 - fl_server - INFO - Update received from client_3 for round 7: 1/5 clients
+INFO:     127.0.0.1:62980 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62981 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59951 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:29,964 - fl_server - INFO - Update received from client_4 for round 7: 2/5 clients
+INFO:     127.0.0.1:59953 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59954 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59956 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59955 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59957 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59960 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59967 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59969 - "POST /submit_update HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59970 - "GET /round_status?round_num=4 HTTP/1.1" 200 OK
+2026-09-23 19:40:33,592 - fl_server - INFO - Update received from client_2 for round 7: 3/5 clients
+INFO:     127.0.0.1:59971 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:34,054 - fl_server - INFO - Update received from client_1 for round 7: 4/5 clients
+INFO:     127.0.0.1:59972 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:34,069 - fl_server - INFO - Update received from client_0 for round 7: 5/5 clients
+2026-09-23 19:40:34,070 - fl_server - INFO - Round 7 aggregated. Advancing to round 8
+INFO:     127.0.0.1:59973 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:35,346 - fl_server - INFO - Update received from client_4 for round 8: 1/5 clients
+INFO:     127.0.0.1:59978 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59982 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59984 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59983 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:37,490 - fl_server - INFO - Update received from client_3 for round 8: 2/5 clients
+INFO:     127.0.0.1:59985 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59986 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59988 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59992 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59996 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:40,951 - fl_server - INFO - Update received from client_2 for round 8: 3/5 clients
+INFO:     127.0.0.1:59997 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59998 - "POST /submit_update HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:60001 - "GET /round_status?round_num=5 HTTP/1.1" 200 OK
+2026-09-23 19:40:42,015 - fl_server - INFO - Update received from client_1 for round 8: 4/5 clients
+2026-09-23 19:40:42,017 - fl_server - INFO - Update received from client_0 for round 8: 5/5 clients
+INFO:     127.0.0.1:60003 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:42,020 - fl_server - INFO - Round 8 aggregated. Advancing to round 9
+INFO:     127.0.0.1:60004 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:43,137 - fl_server - INFO - Update received from client_3 for round 9: 1/5 clients
+INFO:     127.0.0.1:60008 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60010 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:45,042 - fl_server - INFO - Update received from client_4 for round 9: 2/5 clients
+INFO:     127.0.0.1:60011 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60012 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60014 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60015 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:40:47,109 - fl_server - INFO - Update received from client_2 for round 9: 3/5 clients
+INFO:     127.0.0.1:60019 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60020 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:40:48,592 - fl_server - INFO - Update received from client_1 for round 9: 4/5 clients
+INFO:     127.0.0.1:60022 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:40:48,686 - fl_server - INFO - Update received from client_0 for round 9: 5/5 clients
+2026-09-23 19:40:48,693 - fl_server - INFO - Round 9 aggregated. Advancing to round 10
+INFO:     127.0.0.1:60023 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60024 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60026 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60028 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:44:49,945 - fl_server - INFO - FL Server initialized for 5 clients
+INFO:     Started server process [19440]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59134 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51173 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51176 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:44:59,611 - fl_server - INFO - Client client_0 registered (1/5 registered)
+INFO:     127.0.0.1:51183 - "POST /register_client HTTP/1.1" 200 OK
+2026-09-23 19:44:59,846 - fl_server - INFO - Client client_1 registered (2/5 registered)
+INFO:     127.0.0.1:51186 - "POST /register_client HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51189 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+2026-09-23 19:45:00,519 - fl_server - INFO - Client client_2 registered (3/5 registered)
+INFO:     127.0.0.1:51191 - "POST /register_client HTTP/1.1" 200 OK
+2026-09-23 19:45:01,156 - fl_server - INFO - Client client_3 registered (4/5 registered)
+INFO:     127.0.0.1:51193 - "POST /register_client HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51195 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:01,675 - fl_server - INFO - Client client_4 registered (5/5 registered)
+INFO:     127.0.0.1:51196 - "POST /register_client HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51199 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51200 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51201 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51202 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51204 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51205 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51208 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:45:10,422 - fl_server - INFO - Update received from client_3 for round 0: 1/5 clients
+INFO:     127.0.0.1:51217 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:10,512 - fl_server - INFO - Update received from client_4 for round 0: 2/5 clients
+INFO:     127.0.0.1:51218 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51219 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+2026-09-23 19:45:10,621 - fl_server - INFO - Update received from client_2 for round 0: 3/5 clients
+INFO:     127.0.0.1:51222 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:10,730 - fl_server - INFO - Update received from client_0 for round 0: 4/5 clients
+2026-09-23 19:45:10,732 - fl_server - INFO - Update received from client_1 for round 0: 5/5 clients
+INFO:     127.0.0.1:51223 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:10,736 - fl_server - INFO - Round 0 aggregated. Advancing to round 1
+INFO:     127.0.0.1:51224 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51230 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51231 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51232 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51234 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51236 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51235 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51244 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+2026-09-23 19:45:16,013 - fl_server - INFO - Update received from client_4 for round 1: 1/5 clients
+INFO:     127.0.0.1:51245 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:16,404 - fl_server - INFO - Update received from client_3 for round 1: 2/5 clients
+INFO:     127.0.0.1:51246 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:17,279 - fl_server - INFO - Update received from client_2 for round 1: 3/5 clients
+INFO:     127.0.0.1:51249 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:17,499 - fl_server - INFO - Update received from client_0 for round 1: 4/5 clients
+INFO:     127.0.0.1:51251 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:17,513 - fl_server - INFO - Update received from client_1 for round 1: 5/5 clients
+2026-09-23 19:45:17,514 - fl_server - INFO - Round 1 aggregated. Advancing to round 2
+INFO:     127.0.0.1:51252 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51256 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51258 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51261 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51262 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51263 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:21,349 - fl_server - INFO - Update received from client_4 for round 2: 1/5 clients
+INFO:     127.0.0.1:51264 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51265 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:22,200 - fl_server - INFO - Update received from client_3 for round 2: 2/5 clients
+INFO:     127.0.0.1:51268 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52076 - "GET /round_status?round_num=1 HTTP/1.1" 200 OK
+2026-09-23 19:45:23,922 - fl_server - INFO - Update received from client_2 for round 2: 3/5 clients
+INFO:     127.0.0.1:52077 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:24,312 - fl_server - INFO - Update received from client_0 for round 2: 4/5 clients
+2026-09-23 19:45:24,312 - fl_server - INFO - Update received from client_1 for round 2: 5/5 clients
+INFO:     127.0.0.1:52078 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:24,315 - fl_server - INFO - Round 2 aggregated. Advancing to round 3
+INFO:     127.0.0.1:52079 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52080 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52088 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:26,798 - fl_server - INFO - Update received from client_4 for round 3: 1/5 clients
+INFO:     127.0.0.1:52090 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52091 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52092 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52093 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:27,759 - fl_server - INFO - Update received from client_3 for round 3: 2/5 clients
+INFO:     127.0.0.1:52094 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52097 - "GET /round_status?round_num=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52103 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:30,300 - fl_server - INFO - Update received from client_2 for round 3: 3/5 clients
+INFO:     127.0.0.1:52105 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52106 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:30,957 - fl_server - INFO - Update received from client_1 for round 3: 4/5 clients
+2026-09-23 19:45:30,957 - fl_server - INFO - Update received from client_0 for round 3: 5/5 clients
+INFO:     127.0.0.1:52107 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:30,961 - fl_server - INFO - Round 3 aggregated. Advancing to round 4
+INFO:     127.0.0.1:52108 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52109 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:32,142 - fl_server - INFO - Update received from client_4 for round 4: 1/5 clients
+INFO:     127.0.0.1:52115 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52116 - "GET /round_status?round_num=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52118 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:33,379 - fl_server - INFO - Update received from client_3 for round 4: 2/5 clients
+INFO:     127.0.0.1:52119 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52121 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52122 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52129 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52131 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:36,588 - fl_server - INFO - Update received from client_2 for round 4: 3/5 clients
+INFO:     127.0.0.1:52132 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52135 - "POST /submit_update HTTP/1.1" 400 Bad Request
+2026-09-23 19:45:37,638 - fl_server - INFO - Update received from client_0 for round 4: 4/5 clients
+INFO:     127.0.0.1:52138 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:37,653 - fl_server - INFO - Update received from client_1 for round 4: 5/5 clients
+2026-09-23 19:45:37,654 - fl_server - INFO - Round 4 aggregated. Advancing to round 5
+INFO:     127.0.0.1:52137 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52139 - "GET /round_status?round_num=4 HTTP/1.1" 200 OK
+2026-09-23 19:45:38,965 - fl_server - INFO - Update received from client_3 for round 5: 1/5 clients
+INFO:     127.0.0.1:52143 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52145 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52147 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52149 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52150 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:41,503 - fl_server - INFO - Update received from client_4 for round 5: 2/5 clients
+INFO:     127.0.0.1:52152 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52153 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52156 - "GET /round_status?round_num=5 HTTP/1.1" 200 OK
+2026-09-23 19:45:42,757 - fl_server - INFO - Update received from client_2 for round 5: 3/5 clients
+INFO:     127.0.0.1:52160 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:44,049 - fl_server - INFO - Update received from client_1 for round 5: 4/5 clients
+INFO:     127.0.0.1:52162 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:44,064 - fl_server - INFO - Update received from client_0 for round 5: 5/5 clients
+2026-09-23 19:45:44,065 - fl_server - INFO - Round 5 aggregated. Advancing to round 6
+INFO:     127.0.0.1:52163 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52164 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:45:44,537 - fl_server - INFO - Update received from client_3 for round 6: 1/5 clients
+INFO:     127.0.0.1:52165 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52166 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52172 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:46,793 - fl_server - INFO - Update received from client_4 for round 6: 2/5 clients
+INFO:     127.0.0.1:52174 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52175 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52176 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52177 - "GET /round_status?round_num=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52178 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:48,771 - fl_server - INFO - Update received from client_2 for round 6: 3/5 clients
+INFO:     127.0.0.1:52184 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52186 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52187 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52190 - "POST /submit_update HTTP/1.1" 400 Bad Request
+2026-09-23 19:45:50,536 - fl_server - INFO - Update received from client_1 for round 6: 4/5 clients
+2026-09-23 19:45:50,536 - fl_server - INFO - Update received from client_0 for round 6: 5/5 clients
+INFO:     127.0.0.1:52192 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:45:50,539 - fl_server - INFO - Round 6 aggregated. Advancing to round 7
+INFO:     127.0.0.1:52191 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52199 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52200 - "GET /round_status?round_num=6 HTTP/1.1" 200 OK
+2026-09-23 19:45:52,135 - fl_server - INFO - Update received from client_4 for round 7: 1/5 clients
+INFO:     127.0.0.1:52201 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52209 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52208 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:54,266 - fl_server - INFO - Update received from client_3 for round 7: 2/5 clients
+INFO:     127.0.0.1:52210 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52213 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:54,894 - fl_server - INFO - Update received from client_2 for round 7: 3/5 clients
+INFO:     127.0.0.1:52217 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52221 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52226 - "GET /round_status?round_num=7 HTTP/1.1" 200 OK
+2026-09-23 19:45:57,039 - fl_server - INFO - Update received from client_0 for round 7: 4/5 clients
+2026-09-23 19:45:57,040 - fl_server - INFO - Update received from client_1 for round 7: 5/5 clients
+2026-09-23 19:45:57,041 - fl_server - INFO - Round 7 aggregated. Advancing to round 8
+INFO:     127.0.0.1:52229 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52228 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52230 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:45:57,404 - fl_server - INFO - Update received from client_4 for round 8: 1/5 clients
+INFO:     127.0.0.1:52231 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52233 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52237 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:45:59,967 - fl_server - INFO - Update received from client_3 for round 8: 2/5 clients
+INFO:     127.0.0.1:52241 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52242 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52243 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52244 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:46:01,258 - fl_server - INFO - Update received from client_2 for round 8: 3/5 clients
+INFO:     127.0.0.1:52248 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52251 - "GET /round_status?round_num=7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52255 - "POST /submit_update HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:52256 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:46:03,640 - fl_server - INFO - Update received from client_1 for round 8: 4/5 clients
+2026-09-23 19:46:03,640 - fl_server - INFO - Update received from client_0 for round 8: 5/5 clients
+INFO:     127.0.0.1:52258 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:46:03,644 - fl_server - INFO - Round 8 aggregated. Advancing to round 9
+INFO:     127.0.0.1:52259 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52260 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52262 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:46:05,561 - fl_server - INFO - Update received from client_3 for round 9: 1/5 clients
+INFO:     127.0.0.1:52267 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52268 - "GET /round_status?round_num=8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52271 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52270 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:46:06,892 - fl_server - INFO - Update received from client_4 for round 9: 2/5 clients
+INFO:     127.0.0.1:52273 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:46:07,572 - fl_server - INFO - Update received from client_2 for round 9: 3/5 clients
+INFO:     127.0.0.1:52275 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52278 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:46:10,145 - fl_server - INFO - Update received from client_1 for round 9: 4/5 clients
+INFO:     127.0.0.1:52281 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:46:10,174 - fl_server - INFO - Update received from client_0 for round 9: 5/5 clients
+2026-09-23 19:46:10,176 - fl_server - INFO - Round 9 aggregated. Advancing to round 10
+INFO:     127.0.0.1:52282 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52283 - "GET /round_status?round_num=9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52286 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:14,844 - fl_server - INFO - FL Server initialized for 5 clients
+INFO:     Started server process [27892]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62536 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62547 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62551 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:48:23,596 - fl_server - INFO - Client client_0 registered (1/5 registered)
+INFO:     127.0.0.1:62091 - "POST /register_client HTTP/1.1" 200 OK
+2026-09-23 19:48:24,046 - fl_server - INFO - Client client_1 registered (2/5 registered)
+INFO:     127.0.0.1:62094 - "POST /register_client HTTP/1.1" 200 OK
+2026-09-23 19:48:24,671 - fl_server - INFO - Client client_2 registered (3/5 registered)
+INFO:     127.0.0.1:62096 - "POST /register_client HTTP/1.1" 200 OK
+2026-09-23 19:48:25,066 - fl_server - INFO - Client client_3 registered (4/5 registered)
+INFO:     127.0.0.1:62098 - "POST /register_client HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62100 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62102 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:25,750 - fl_server - INFO - Client client_4 registered (5/5 registered)
+INFO:     127.0.0.1:62103 - "POST /register_client HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62105 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62106 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62107 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62108 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62109 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62112 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62115 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:48:34,144 - fl_server - INFO - Update received from client_3 for round 0: 1/5 clients
+INFO:     127.0.0.1:62121 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:34,344 - fl_server - INFO - Update received from client_4 for round 0: 2/5 clients
+INFO:     127.0.0.1:62122 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:34,471 - fl_server - INFO - Update received from client_1 for round 0: 3/5 clients
+INFO:     127.0.0.1:62123 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:34,486 - fl_server - INFO - Update received from client_2 for round 0: 4/5 clients
+INFO:     127.0.0.1:62124 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:34,548 - fl_server - INFO - Update received from client_0 for round 0: 5/5 clients
+2026-09-23 19:48:34,551 - fl_server - INFO - Round 0 aggregated. Advancing to round 1
+INFO:     127.0.0.1:62125 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57728 - "GET /round_status?round_num=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49821 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49822 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49823 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49824 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49825 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:39,714 - fl_server - INFO - Update received from client_4 for round 1: 1/5 clients
+INFO:     127.0.0.1:49832 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:39,950 - fl_server - INFO - Update received from client_3 for round 1: 2/5 clients
+INFO:     127.0.0.1:49833 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:41,043 - fl_server - INFO - Update received from client_2 for round 1: 3/5 clients
+INFO:     127.0.0.1:49836 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:41,183 - fl_server - INFO - Update received from client_1 for round 1: 4/5 clients
+INFO:     127.0.0.1:49837 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:41,277 - fl_server - INFO - Update received from client_0 for round 1: 5/5 clients
+2026-09-23 19:48:41,278 - fl_server - INFO - Round 1 aggregated. Advancing to round 2
+INFO:     127.0.0.1:49838 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49839 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49844 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49846 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49848 - "GET /round_status?round_num=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49850 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49851 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49852 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:45,012 - fl_server - INFO - Update received from client_4 for round 2: 1/5 clients
+INFO:     127.0.0.1:49853 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:45,485 - fl_server - INFO - Update received from client_3 for round 2: 2/5 clients
+INFO:     127.0.0.1:49855 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49859 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:47,404 - fl_server - INFO - Update received from client_2 for round 2: 3/5 clients
+INFO:     127.0.0.1:49862 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:47,711 - fl_server - INFO - Update received from client_1 for round 2: 4/5 clients
+INFO:     127.0.0.1:49863 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:47,791 - fl_server - INFO - Update received from client_0 for round 2: 5/5 clients
+2026-09-23 19:48:47,792 - fl_server - INFO - Round 2 aggregated. Advancing to round 3
+INFO:     127.0.0.1:49864 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49865 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49866 - "GET /round_status?round_num=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49869 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:50,337 - fl_server - INFO - Update received from client_4 for round 3: 1/5 clients
+INFO:     127.0.0.1:49874 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49875 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49876 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49878 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49879 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:51,029 - fl_server - INFO - Update received from client_3 for round 3: 2/5 clients
+INFO:     127.0.0.1:49880 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49886 - "GET /round_status?round_num=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49888 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:53,726 - fl_server - INFO - Update received from client_2 for round 3: 3/5 clients
+INFO:     127.0.0.1:49890 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49891 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:48:54,181 - fl_server - INFO - Update received from client_1 for round 3: 4/5 clients
+INFO:     127.0.0.1:49892 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:54,269 - fl_server - INFO - Update received from client_0 for round 3: 5/5 clients
+2026-09-23 19:48:54,270 - fl_server - INFO - Round 3 aggregated. Advancing to round 4
+INFO:     127.0.0.1:49893 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49896 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:48:55,638 - fl_server - INFO - Update received from client_4 for round 4: 1/5 clients
+INFO:     127.0.0.1:49899 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:48:56,545 - fl_server - INFO - Update received from client_3 for round 4: 2/5 clients
+INFO:     127.0.0.1:49901 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49903 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49904 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49905 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49907 - "GET /round_status?round_num=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49911 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49914 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:00,004 - fl_server - INFO - Update received from client_2 for round 4: 3/5 clients
+INFO:     127.0.0.1:49915 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49917 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:00,650 - fl_server - INFO - Update received from client_1 for round 4: 4/5 clients
+INFO:     127.0.0.1:49919 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:00,760 - fl_server - INFO - Update received from client_0 for round 4: 5/5 clients
+2026-09-23 19:49:00,761 - fl_server - INFO - Round 4 aggregated. Advancing to round 5
+INFO:     127.0.0.1:49920 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:00,933 - fl_server - INFO - Update received from client_4 for round 5: 1/5 clients
+INFO:     127.0.0.1:49921 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:02,151 - fl_server - INFO - Update received from client_3 for round 5: 2/5 clients
+INFO:     127.0.0.1:49926 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49927 - "GET /round_status?round_num=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49931 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49932 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49933 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49936 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49939 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:06,166 - fl_server - INFO - Update received from client_2 for round 5: 3/5 clients
+INFO:     127.0.0.1:49942 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49943 - "POST /submit_update HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:49944 - "GET /round_status?round_num=5 HTTP/1.1" 200 OK
+2026-09-23 19:49:07,124 - fl_server - INFO - Update received from client_1 for round 5: 4/5 clients
+INFO:     127.0.0.1:49946 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:07,250 - fl_server - INFO - Update received from client_0 for round 5: 5/5 clients
+2026-09-23 19:49:07,252 - fl_server - INFO - Round 5 aggregated. Advancing to round 6
+INFO:     127.0.0.1:49948 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:07,721 - fl_server - INFO - Update received from client_3 for round 6: 1/5 clients
+INFO:     127.0.0.1:49949 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49954 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49955 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49957 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49959 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:10,317 - fl_server - INFO - Update received from client_4 for round 6: 2/5 clients
+INFO:     127.0.0.1:49960 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49961 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49966 - "GET /round_status?round_num=5 HTTP/1.1" 200 OK
+2026-09-23 19:49:12,209 - fl_server - INFO - Update received from client_2 for round 6: 3/5 clients
+INFO:     127.0.0.1:49967 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49970 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49971 - "POST /submit_update HTTP/1.1" 400 Bad Request
+2026-09-23 19:49:13,589 - fl_server - INFO - Update received from client_1 for round 6: 4/5 clients
+INFO:     127.0.0.1:49973 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:13,748 - fl_server - INFO - Update received from client_0 for round 6: 5/5 clients
+2026-09-23 19:49:13,749 - fl_server - INFO - Round 6 aggregated. Advancing to round 7
+INFO:     127.0.0.1:49974 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49976 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49979 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:15,602 - fl_server - INFO - Update received from client_4 for round 7: 1/5 clients
+INFO:     127.0.0.1:49981 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49984 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49985 - "GET /round_status?round_num=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49986 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:17,487 - fl_server - INFO - Update received from client_3 for round 7: 2/5 clients
+INFO:     127.0.0.1:49988 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:18,237 - fl_server - INFO - Update received from client_2 for round 7: 3/5 clients
+INFO:     127.0.0.1:49991 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49993 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49996 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:19,987 - fl_server - INFO - Update received from client_1 for round 7: 4/5 clients
+INFO:     127.0.0.1:49998 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:20,098 - fl_server - INFO - Update received from client_0 for round 7: 5/5 clients
+2026-09-23 19:49:20,099 - fl_server - INFO - Round 7 aggregated. Advancing to round 8
+INFO:     127.0.0.1:49999 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:20,883 - fl_server - INFO - Update received from client_4 for round 8: 1/5 clients
+INFO:     127.0.0.1:50061 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50065 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50066 - "GET /round_status?round_num=7 HTTP/1.1" 200 OK
+2026-09-23 19:49:23,064 - fl_server - INFO - Update received from client_3 for round 8: 2/5 clients
+INFO:     127.0.0.1:50070 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50071 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50073 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50075 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:24,270 - fl_server - INFO - Update received from client_2 for round 8: 3/5 clients
+INFO:     127.0.0.1:50078 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50082 - "GET /round_status?round_num=8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50084 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50085 - "POST /submit_update HTTP/1.1" 400 Bad Request
+2026-09-23 19:49:26,489 - fl_server - INFO - Update received from client_1 for round 8: 4/5 clients
+INFO:     127.0.0.1:50086 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:26,566 - fl_server - INFO - Update received from client_0 for round 8: 5/5 clients
+2026-09-23 19:49:26,567 - fl_server - INFO - Round 8 aggregated. Advancing to round 9
+INFO:     127.0.0.1:50087 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50089 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50092 - "GET /health HTTP/1.1" 200 OK
+2026-09-23 19:49:28,646 - fl_server - INFO - Update received from client_3 for round 9: 1/5 clients
+INFO:     127.0.0.1:50095 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50097 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50099 - "GET /global_model HTTP/1.1" 200 OK
+2026-09-23 19:49:30,273 - fl_server - INFO - Update received from client_4 for round 9: 2/5 clients
+INFO:     127.0.0.1:50100 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:30,320 - fl_server - INFO - Update received from client_2 for round 9: 3/5 clients
+INFO:     127.0.0.1:50101 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50103 - "GET /round_status?round_num=8 HTTP/1.1" 200 OK
+2026-09-23 19:49:32,963 - fl_server - INFO - Update received from client_1 for round 9: 4/5 clients
+INFO:     127.0.0.1:50106 - "POST /submit_update HTTP/1.1" 200 OK
+2026-09-23 19:49:33,039 - fl_server - INFO - Update received from client_0 for round 9: 5/5 clients
+2026-09-23 19:49:33,040 - fl_server - INFO - Round 9 aggregated. Advancing to round 10
+INFO:     127.0.0.1:50107 - "POST /submit_update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50108 - "GET /global_model HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50110 - "GET /round_status?round_num=9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50112 - "GET /global_model HTTP/1.1" 200 OK

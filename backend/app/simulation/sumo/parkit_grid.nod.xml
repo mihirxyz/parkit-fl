@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodes>
+    <!-- Network is in Cartesian meters (0-400 in each dimension).
+         The location element geo-references this to Pune with proper WGS84 offset. -->
+    <location netOffset="0.0,0.0" convBoundary="0.00,0.00,400.00,400.00" origBoundary="0.00,0.00,400.00,400.00" projParameter="+proj=latlong +ellps=WGS84 +datum=WGS84 +no_defs"/>
+    <node id="west" x="0" y="200" type="dead_end"/>
+    <node id="east" x="400" y="200" type="dead_end"/>
+    <node id="south" x="200" y="0" type="dead_end"/>
+    <node id="north" x="200" y="400" type="dead_end"/>
+    <node id="center" x="200" y="200" type="priority"/>
+</nodes>

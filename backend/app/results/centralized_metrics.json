@@ -1,0 +1,49 @@
+{
+  "dataset": {
+    "total_samples": 20158,
+    "n_features": 3,
+    "class_distribution": {
+      "moving": 5458,
+      "parked": 14700
+    }
+  },
+  "training": {
+    "train_samples": 14110,
+    "val_samples": 3023,
+    "test_samples": 3025,
+    "epochs_run": 11,
+    "batch_size": 32,
+    "learning_rate": 0.001
+  },
+  "test_results": {
+    "overall": {
+      "accuracy": 0.9943801652892562,
+      "precision_macro": 0.9961763382816015,
+      "recall_macro": 0.9896214896214897,
+      "f1_macro": 0.9928371541445821,
+      "precision_weighted": 0.9944231419829506,
+      "recall_weighted": 0.9943801652892562,
+      "f1_weighted": 0.9943614821058804
+    },
+    "per_class": {
+      "moving": {
+        "precision": 1.0,
+        "recall": 0.9792429792429792,
+        "f1": 0.9895126465144972,
+        "support": 819
+      },
+      "parked": {
+        "precision": 0.9923526765632029,
+        "recall": 1.0,
+        "f1": 0.9961616617746669,
+        "support": 2206
+      }
+    },
+    "confusion_matrix": {
+      "true_negatives": 802,
+      "false_positives": 17,
+      "false_negatives": 0,
+      "true_positives": 2206
+    }
+  }
+}
